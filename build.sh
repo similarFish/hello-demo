@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-mvn clean && \
-	mvn package && \
-    docker build -t hello-a:latest .
+#mvn clean && \
+#	mvn package && \
+docker build -t hello-a:latest .
