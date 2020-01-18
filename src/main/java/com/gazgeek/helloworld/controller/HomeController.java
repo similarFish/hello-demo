@@ -8,7 +8,7 @@ public class HomeController {
 
     @RequestMapping("/")
     String home() {
-        return "Hello from openshift Demo!\n new Data";
+        return "Hello from openshift Demo!";
     }
 
 }
