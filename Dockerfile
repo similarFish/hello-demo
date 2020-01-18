@@ -1,11 +1,14 @@
-FROM maven:3.3-jdk-8
+FROM java:8
 
-COPY . /app
-WORKDIR /app
+VOLUME /ROOT
 
-RUN ["mvn", "clean", "install"]
+ADD /target/helloworld-0.0.1-SNAPSHOT.jar /app.jar
 
+RUN bash -c 'touch /app.jar'
 
-CMD ["java", "-jar", "target/helloworld-0.0.1-SNAPSHOT.jar"]
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+&& echo 'Asia/Shanghai' >/etc/timezone
 
 EXPOSE 8080
+
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]
